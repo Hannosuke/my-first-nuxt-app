@@ -33,7 +33,7 @@ export default {
     }
   },
   async asyncData({ route, store, redirect }) {
-    if (store.getters['users'][route.params.id]) {
+    if (store.getters['user'].length) {
       return
     }
     try {
@@ -44,12 +44,12 @@ export default {
   },
   computed: {
     user() {
-      return this.users[this.$route.params.id]
+      return this.user
     },
     items() {
       return this.userItems[this.$route.params.id] || []
     },
-    ...mapGetters(['users', 'userItems'])
+    ...mapGetters(['user', 'userItems'])
   }
 }
 </script>

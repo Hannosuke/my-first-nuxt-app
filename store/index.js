@@ -4,12 +4,12 @@ export default () =>
   new Vuex.Store({
     state: {
       items: [],
-      users: {},
+      user: {},
       userItems: {}
     },
     getters: {
       items: (state) => state.items,
-      users: (state) => state.users,
+      user: (state) => state.user,
       userItems: (state) => state.userItems
     },
     mutations: {
@@ -17,7 +17,7 @@ export default () =>
         state.items = items
       },
       setUser (state, { user }) {
-        state.user[user.id] = user
+        state.user = user
       },
       setUserItems(state, { user, items }) {
         state.userItems[user.id] = items
@@ -29,7 +29,7 @@ export default () =>
           await this.$axios.$get('https://qiita.com/api/v2/items?query=tag:nuxt')
         commit('setItems', { items })
       },
-      async fetchUsersInfo({ commit }, { id }) {
+      async fetchUserInfo({ commit }, { id }) {
         const [user, items] = await Promise.all([
           this.$axios.$get(`https://qiita.com/api/v2/users/${id}`),
           this.$axios.$get(`https://qiita.com/api/v2/items?query=user:${id}`)
