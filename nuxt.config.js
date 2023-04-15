@@ -27,6 +27,11 @@ module.exports = {
   plugins: [
     '~/plugins/axios.js'
   ],
+  router: {
+    middleware: [
+      'auth'
+    ]
+  },
   env: {
     QIITA_TOKEN: process.env.QIITA_TOKEN
   },
