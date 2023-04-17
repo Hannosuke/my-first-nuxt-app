@@ -25,7 +25,8 @@ module.exports = {
 
   },
   plugins: [
-    '~/plugins/axios.js'
+    '~/plugins/axios.js',
+    '~/plugins/logger'
   ],
   router: {
     middleware: [
